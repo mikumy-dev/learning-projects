@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>A Simple Calculator</title>
+		<style type="text/css">
+			input[type=button]
+              {
+                      width:25px;
+                      height:25px;
+              }
+		</style>
+		<script>
+		/*
+		例如计算1+2+3+4=10
+		逻辑顺序：
+		0.输入1，记录入arr[0]，显示arr[0]
+		1.输入+，记录在arr[1]，不显示
+		2.输入2，记录在arr[2]，显示arr[2]
+		3.判断是否=，输入+，arr[0]=arr[0]+arr[2]，显示计算结果arr[0]，并将+记录在arr[1]
+		4.输入3，记录在arr[2]，显示arr[2]
+		5.判断是否=，输入+，arr[0]=arr[0]+arr[2]，显示计算结果arr[0]，并将+记录在arr[1]
+		6.输入4，记录在arr[2]，显示arr[2]
+		7.输入=，arr[0]=arr[0]+arr[2]，显示计算结果arr[0]
+		*/
+			
+			var equationStrArray=['', '', ''];
+			var n=0;
+			var num1='', num2='', fuhao='';
+			function buttonclick(num) {  //开始用了关键字click做函数名，半天没有结果
+				screen=document.getElementById('screen');
+				//输入第一个数
+				if (!isNaN(parseFloat(num)) && n==0) {  
+					num1+=num;				
+					screen.value = num1;
+				}
+				//输入第二个运算符
+				if (isNaN(parseFloat(num))==true && num!= "dengyu" && n==1) {
+					switch(fuhao){
+						case "jia":	num1=parseFloat(num1)+parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										fuhao=num;
+										break;
+						case "jian":	num1=parseFloat(num1)-parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										fuhao=num;
+										break;
+						case "cheng":	num1=parseFloat(num1)*parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										fuhao=num;
+										break;
+						case "chu":	num1=parseFloat(num1)/parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										fuhao=num;
+										break;				
+					}
+				
+					
+				}
+				
+				//输入第一个运算符
+				if (isNaN(parseFloat(num))==true  && n==0) {  
+					fuhao=num;
+					screen.value = num1;
+					n=1;
+					
+				}
+				//输入第二个数
+				if (isNaN(parseFloat(num))==false && n==1) {
+					
+					num2+=num;				
+					screen.value = num2;
+					
+				}
+				
+				//输入等于
+				if (num=="dengyu" && n==1) {
+					switch(fuhao){
+						case "jia":	num1=parseFloat(num1)+parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										
+										break;
+						case "jian":	num1=parseFloat(num1)-parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										
+										break;
+						case "cheng":	num1=parseFloat(num1)*parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										
+										break;
+						case "chu":	num1=parseFloat(num1)/parseFloat(num2);
+										screen.value = String(num1);
+										num2='';
+										
+										break;		
+				}
+			}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<p><input type='text' id='screen'></p>
+		<div>
+			<input type='button' value='7' onclick='buttonclick("7")'>
+			<input type='button' value='8' onclick='buttonclick("8")'>
+			<input type='button' value='9' onclick='buttonclick("9")'>
+		</div>
+		<div>
+			<input type='button' value='4' onclick='buttonclick("4")'>
+			<input type='button' value='5' onclick='buttonclick("5")'>
+			<input type='button' value='6' onclick='buttonclick("6")'>
+			<input type='button'  value='*' onclick='buttonclick("cheng")'>
+			<input type='button'  value='/' onclick='buttonclick("chu")'>
+		</div>
+		<div>
+			<input type='button' value='1' onclick='buttonclick("1")'>
+			<input type='button' value='2' onclick='buttonclick("2")'>
+			<input type='button' value='3' onclick='buttonclick("3")'>
+			<input type='button'  value='+' onclick='buttonclick("jia")'>
+			<input type='button'  value='-' onclick='buttonclick("jian")'>
+		</div>	
+		<div>
+			<input type='button' value='0' onclick='buttonclick("0")' >
+			<input type='button' value='.' onclick='buttonclick("dian")' >
+			<input type='button'  value='=' onclick='buttonclick("dengyu")'>
+		</div>	
+			
+			
+			
+			
+			
+			
+		
+		<p>
+			
+			
+			
+			
+		</p>
+		
+	</body>
+</html>
