@@ -6,9 +6,12 @@
 		<style type="text/css">
 			input[type=button]
               {
-                      width:25px;
-                      height:25px;
+                      width:30px;
+                      height:30px;
               }
+			  body{
+				text-align:center;
+			  }
 		</style>
 		<script>
 		/*
@@ -30,12 +33,12 @@
 			function buttonclick(num) {  //开始用了关键字click做函数名，半天没有结果
 				screen=document.getElementById('screen');
 				//输入第一个数
-				if (!isNaN(parseFloat(num)) && n==0) {  
+				if (isNumber(num) && n==0) {  
 					num1+=num;				
 					screen.value = num1;
 				}
 				//输入第二个运算符
-				if (isNaN(parseFloat(num))==true && num!= "dengyu" && n==1) {
+				if (isFuhao(num) && n==1) {
 					switch(fuhao){
 						case "jia":	num1=parseFloat(num1)+parseFloat(num2);
 										screen.value = String(num1);
@@ -58,19 +61,16 @@
 										fuhao=num;
 										break;				
 					}
-				
-					
 				}
 				
 				//输入第一个运算符
-				if (isNaN(parseFloat(num))==true  && n==0) {  
+				if (isFuhao(num)  && n==0) {  
 					fuhao=num;
 					screen.value = num1;
 					n=1;
-					
 				}
 				//输入第二个数
-				if (isNaN(parseFloat(num))==false && n==1) {
+				if (isNumber(num) && n==1) {
 					
 					num2+=num;				
 					screen.value = num2;
@@ -100,10 +100,17 @@
 										num2='';
 										
 										break;		
+					}
 				}
 			}
+			function isNumber(num){
+				if (!isNaN(parseFloat(num)) || num=='.')
+					return true;
 			}
-			
+			function isFuhao(num){
+				if(isNaN(parseFloat(num))==true && num!= "dengyu" && num!='.')
+					return true;
+			}
 		</script>
 	</head>
 	<body>
@@ -112,25 +119,27 @@
 			<input type='button' value='7' onclick='buttonclick("7")'>
 			<input type='button' value='8' onclick='buttonclick("8")'>
 			<input type='button' value='9' onclick='buttonclick("9")'>
+			<input type='button'  value='/' onclick='buttonclick("chu")'>
 		</div>
 		<div>
 			<input type='button' value='4' onclick='buttonclick("4")'>
 			<input type='button' value='5' onclick='buttonclick("5")'>
 			<input type='button' value='6' onclick='buttonclick("6")'>
 			<input type='button'  value='*' onclick='buttonclick("cheng")'>
-			<input type='button'  value='/' onclick='buttonclick("chu")'>
+			
 		</div>
 		<div>
 			<input type='button' value='1' onclick='buttonclick("1")'>
 			<input type='button' value='2' onclick='buttonclick("2")'>
 			<input type='button' value='3' onclick='buttonclick("3")'>
-			<input type='button'  value='+' onclick='buttonclick("jia")'>
+			
 			<input type='button'  value='-' onclick='buttonclick("jian")'>
 		</div>	
 		<div>
 			<input type='button' value='0' onclick='buttonclick("0")' >
-			<input type='button' value='.' onclick='buttonclick("dian")' >
+			<input type='button' value='.' onclick='buttonclick(".")' >
 			<input type='button'  value='=' onclick='buttonclick("dengyu")'>
+			<input type='button'  value='+' onclick='buttonclick("jia")'>
 		</div>	
 			
 			
