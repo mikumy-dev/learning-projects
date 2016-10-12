@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset='utf-8'>
-		<title>A Simple Calculator</title>
+		<meta charset='GB2312'>
+		<title>简易计算器</title>
 		<style type="text/css">
-			input[type=button]
-              {
-                      width:30px;
-                      height:30px;
+			button{
+                width:40px;
+                height:40px;
+				margin:-1px -3px;
+				font-size:16px;
               }
-			  body{
+			  input[type=text]{
+				width:160px;
+				height:25px;
+				font-size:16px;
+			  }
+			  div#widebutton > button{ width: 79px; }
+			  div.all{
 				text-align:center;
+			  }
+			  div{
+				line-height: 30px;
 			  }
 		</style>
 		<script>
@@ -27,7 +37,7 @@
 		7.输入=，arr[0]=arr[0]+arr[2]，显示计算结果arr[0]
 		*/
 			
-			var equationStrArray=['', '', ''];
+			
 			var n=0;
 			var num1='', num2='', fuhao='';
 			var dian=false;
@@ -94,27 +104,41 @@
 				
 				//输入等于
 				if (num=="dengyu" && n==1) {
+					n=0;
 					switch(fuhao){
 						case "jia":	num1=parseFloat(num1)+parseFloat(num2);
 										screen.value = String(num1);
 										num2='';
-										
 										break;
 						case "jian":	num1=parseFloat(num1)-parseFloat(num2);
 										screen.value = String(num1);
 										num2='';
-										
 										break;
 						case "cheng":	num1=parseFloat(num1)*parseFloat(num2);
 										screen.value = String(num1);
 										num2='';
-										
 										break;
 						case "chu":	num1=parseFloat(num1)/parseFloat(num2);
 										screen.value = String(num1);
 										num2='';
-										
 										break;		
+					}
+				}
+				if (num=='C'){
+					n=0;
+					num1='';num2='';fuhao='';
+					dian=false;
+					screen.value=0;
+				}
+				
+				if (num=='backspace'){
+					if(screen.value==num1){
+						num1=num1.slice(0, num1.length-1);
+						screen.value=num1;
+					}
+					if(screen.value==num2){
+						num2=num2.slice(0, num2.length-1);
+						screen.value=num2;
 					}
 				}
 			}
@@ -123,51 +147,42 @@
 					return true;
 			}
 			function isFuhao(num){
-				if(isNaN(parseFloat(num))==true && num!= "dengyu" && num!='.')
+				if(num=='jia' || num=='jian' || num=='cheng' || num=='chu')
 					return true;
 			}
 		</script>
 	</head>
 	<body>
-		<p><input type='text' id='screen'></p>
-		<div>
-			<input type='button' value='7' onclick='buttonclick("7")'>
-			<input type='button' value='8' onclick='buttonclick("8")'>
-			<input type='button' value='9' onclick='buttonclick("9")'>
-			<input type='button'  value='/' onclick='buttonclick("chu")'>
+	<div class="all">
+		<div><input type='text' id='screen'></div>
+		<div id='widebutton'>
+			<button onclick='buttonclick("C")'>C</button>
+			<button onclick='buttonclick("backspace")'>←</button>
 		</div>
 		<div>
-			<input type='button' value='4' onclick='buttonclick("4")'>
-			<input type='button' value='5' onclick='buttonclick("5")'>
-			<input type='button' value='6' onclick='buttonclick("6")'>
-			<input type='button'  value='*' onclick='buttonclick("cheng")'>
-			
+			<button onclick='buttonclick("7")'>7</button>
+			<button onclick='buttonclick("8")'>8</button>
+			<button onclick='buttonclick("9")'>9</button>
+			<button onclick='buttonclick("chu")'>÷</button>
 		</div>
 		<div>
-			<input type='button' value='1' onclick='buttonclick("1")'>
-			<input type='button' value='2' onclick='buttonclick("2")'>
-			<input type='button' value='3' onclick='buttonclick("3")'>
-			<input type='button'  value='-' onclick='buttonclick("jian")'>
+			<button onclick='buttonclick("4")'>4</button>
+			<button onclick='buttonclick("5")'>5</button>
+			<button onclick='buttonclick("6")'>6</button>
+			<button onclick='buttonclick("cheng")'>×</button>
+		</div>
+		<div>
+			<button onclick='buttonclick("1")'>1</button>
+			<button onclick='buttonclick("2")'>2</button>
+			<button onclick='buttonclick("3")'>3</button>
+			<button onclick='buttonclick("jian")'>-</button>
 		</div>	
 		<div>
-			<input type='button' value='0' onclick='buttonclick("0")' >
-			<input type='button' value='.' onclick='buttonclick(".")' >
-			<input type='button'  value='=' onclick='buttonclick("dengyu")'>
-			<input type='button'  value='+' onclick='buttonclick("jia")'>
+			<button onclick='buttonclick("0")'>0</button>
+			<button onclick='buttonclick(".")'>.</button>
+			<button onclick='buttonclick("dengyu")'>=</button>
+			<button onclick='buttonclick("jia")'>+</button>
 		</div>	
-			
-			
-			
-			
-			
-			
-		
-		<p>
-			
-			
-			
-			
-		</p>
-		
+	</div>	
 	</body>
 </html>
