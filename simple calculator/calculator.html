@@ -30,15 +30,24 @@
 			var equationStrArray=['', '', ''];
 			var n=0;
 			var num1='', num2='', fuhao='';
+			var dian=false;
 			function buttonclick(num) {  //开始用了关键字click做函数名，半天没有结果
 				screen=document.getElementById('screen');
 				//输入第一个数
 				if (isNumber(num) && n==0) {  
-					num1+=num;				
-					screen.value = num1;
+					if(num!='.'){
+						num1+=num;				
+						screen.value = num1;
+					}
+					if(num=='.' && !dian) {	//第一个小数点可以进入，第二个不行
+						num1+=num;				
+						screen.value = num1;
+						dian=true;
+					}
 				}
 				//输入第二个运算符
 				if (isFuhao(num) && n==1) {
+					dian=false;
 					switch(fuhao){
 						case "jia":	num1=parseFloat(num1)+parseFloat(num2);
 										screen.value = String(num1);
@@ -68,13 +77,19 @@
 					fuhao=num;
 					screen.value = num1;
 					n=1;
+					dian=false;
 				}
 				//输入第二个数
 				if (isNumber(num) && n==1) {
-					
-					num2+=num;				
-					screen.value = num2;
-					
+					if(num!='.'){
+						num2+=num;				
+						screen.value = num2;
+					}
+					if(num=='.' && !dian) {	//第一个小数点可以进入，第二个不行
+						num2+=num;				
+						screen.value = num2;
+						dian=true;
+					}
 				}
 				
 				//输入等于
@@ -132,7 +147,6 @@
 			<input type='button' value='1' onclick='buttonclick("1")'>
 			<input type='button' value='2' onclick='buttonclick("2")'>
 			<input type='button' value='3' onclick='buttonclick("3")'>
-			
 			<input type='button'  value='-' onclick='buttonclick("jian")'>
 		</div>	
 		<div>
