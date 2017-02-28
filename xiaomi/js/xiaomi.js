@@ -1,14 +1,12 @@
 
-$("#head_car").hover(function(){
-	$(this).css("background", "#fbfee9");
-	$(".head_car_text").css("color","#ff6700");
-	$("#car_content").css({"width":"300px"}).animate({height:"100px"},400).finish();
-},function(){
-	$(this).css("background","#424242");
-	$(".head_car_text").css("color", "#b0b0b0");
-	$("#car_content").css({"width":"300px"}).animate({
-		height:"0px"
-	},400);
+$(".head_box #head_wrap #head_right #head_car").hover(function() {
+	$(this).css('background', '#f60');
+	$(this).children('a').css('color', '#f0f0f0');
+	$("#car_content").animate({height: "300px"}, 500);
+}, function() {
+	$(this).css('background', '#444');
+	$(this).children('a').css('color', '#a0a0a0');
+	$("#car_content").animate({height: "0px"}, 500);
 });
 
 $(".menu_li").hover(function() {

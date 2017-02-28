@@ -50,65 +50,62 @@ html table{
 	width: 100%;
 	height: 40px;
 	background: #333;
-	overflow: visible;
 }
 	.head_box #head_wrap{
 		width: 1226px;
 		height: 40px;
-		margin: 0 auto;
+		margin: 0 auto;/*利用左右margin auto来左右居中*/
 	}
 		.head_box #head_wrap #head_nav{
 			float: left;
-			line-height: 40px;
-			color: #b0b0b0;
 			font-size: 12px;
-			text-align: center;
-			cursor: pointer;
+			color: #aaa;
+			line-height: 40px;/*利用line-height等于块高度使文字上下居中于块*/
 		}
-		.head_box #head_wrap #head_nav a{
-			margin-left: 5px;
-			color: #b0b0b0;
-		}
-		.head_box #head_wrap #head_nav a:hover{
-			text-decoration: none;
-			color: #fff;
-		}
-		.head_box #head_wrap #head_nav span{
-			margin-left: 5px;
-		}
-	.head_box #head_wrap #head_right{
-		float: right;
-		line-height: 40px;
-		color: #b0b0b0;
-		font-style: 15px;
-		text-align: center;
-		cursor: pointer;
-	}
-		.head_box #head_wrap #head_right #head_landing{
-			float: left;
-			margin-right: 15px;
-		}
-		.head_box #head_wrap #head_right a{
-			color:#b0b0b0;
-		}
-			.head_box #head_wrap #head_right #head_landing a:hover{
-				text-decoration: none;
-				color: #fff;
+			.head_box #head_wrap #head_nav a{
+				color: #a0a0a0;
+				margin-left: 5px;
 			}
-		.head_box #head_wrap #head_right #head_car{
+			.head_box #head_wrap #head_nav a:hover{
+				color: #f0f0f0;
+				text-decoration: none;
+			}
+			.head_box #head_wrap #head_nav span{
+				margin-left: 5px;
+			}
+		.head_box #head_wrap #head_right{
 			float: right;
-			width: 100px;
-			height: 40px;
-			background: #424242;
-			position: relative;
+			color: #a0a0a0;
+			line-height: 40px;
 		}
-			.head_box #head_wrap #head_right #head_car a:hover{
+			.head_box #head_wrap #head_right a{
+				color: #a0a0a0;				
+			}
+			.head_box #head_wrap #head_right a:hover{
+				color: #f0f0f0;
 				text-decoration: none;
 			}
-			.head_box #head_wrap #head_right #head_car #car_content{
-				position: absolute;
-				margin-left: -200px;
+			.head_box #head_wrap #head_right #head_landing{
+				float: left;				
+				padding: 0 10px;
 			}
+			.head_box #head_wrap #head_right #head_car{
+				float: right;
+				text-align: center;/*让div中的文字左右居中，这句代码应该写在div所属的css中，而不是文字所属的css中*/
+				height: 40px;
+				width: 100px;
+				background: #444;
+				cursor: pointer;
+			}
+				.head_box #head_wrap #head_right #head_car #car_content{
+					position: relative;
+					top:0px;
+					right: 200px;					
+					height: 0px;
+					width: 300px;
+					background: #efc;
+					z-index: 999;					
+				}
 
 #main_head_box{
 	width: 100%;
