@@ -1,4 +1,4 @@
-# 前端练习小项目
+# 前端练习项目
 
 ### 基础特效实例练习
 - [控制div属性](https://zosoyi.github.io/learning-projects/实例练习/lesson1/控制div属性.html)
